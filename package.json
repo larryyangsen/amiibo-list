@@ -1,5 +1,5 @@
 {
-    "name": "amiibo",
+    "name": "amiibo-list",
     "version": "1.0.0",
     "description": "Use React new context api",
     "main": "index.js",
