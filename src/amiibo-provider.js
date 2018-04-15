@@ -13,8 +13,9 @@ export default class AmiiboContextProvider extends Component {
         const searhParams = new URLSearchParams({ character: 'mario' });
         this.amiiboUrl.search = searhParams;
     }
-    async getAmiibo(character) {
-        const searhParams = character === 'all' ? new URLSearchParams() : new URLSearchParams({ character });
+    getAmiibo = async character => {
+        const searhParams =
+            character.toLowerCase() === 'all' ? new URLSearchParams() : new URLSearchParams({ character });
         this.amiiboUrl.search = searhParams;
         try {
             const { data } = await axios.get(this.amiiboUrl);
@@ -24,8 +25,8 @@ export default class AmiiboContextProvider extends Component {
                 amiibo: []
             });
         }
-    }
-    onInputBlur = async name => {
+    };
+    onInputChange = async name => {
         await this.getAmiibo(name);
     };
 
@@ -34,7 +35,7 @@ export default class AmiiboContextProvider extends Component {
             <AmiiboContext.Provider value={{ ...this.state }}>
                 <div>
                     <label htmlFor="name-input">Character:</label>
-                    <Input id="name-input" onblur={this.onInputBlur} value={'mario'} />
+                    <Input id="name-input" onchange={this.onInputChange} value={'mario'} />
                 </div>
                 {this.props.children}
             </AmiiboContext.Provider>
