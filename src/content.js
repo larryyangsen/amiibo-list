@@ -4,10 +4,10 @@ export default ({ amiibo }) => {
     const { amiiboSeries, image, character } = amiibo;
 
     return (
-        <div>
+        <div className="aiibo-content">
             <h1>{amiiboSeries}</h1>
             <h2>{character}</h2>
-            <img src={image} alt={character} />
+            <img src={image} alt={character} height="240" />
         </div>
     );
 };

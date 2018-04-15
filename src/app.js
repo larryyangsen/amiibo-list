@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AmiiboProvider from './amiibo-provider';
 import AmiiboContext from './amiibo-context';
 import Content from './content';
-
+import './app.css';
 export default class extends Component {
     constructor(props) {
         super(props);
@@ -13,9 +13,11 @@ export default class extends Component {
         return (
             <AmiiboProvider>
                 <AmiiboContext.Consumer>
-                    {context =>
-                        context.amiibo.map(amiibo => <Content key={amiibo.head + amiibo.tail} amiibo={amiibo} />)
-                    }
+                    {context => (
+                        <div className="amiibo-container">
+                            {context.amiibo.map(amiibo => <Content key={amiibo.head + amiibo.tail} amiibo={amiibo} />)}
+                        </div>
+                    )}
                 </AmiiboContext.Consumer>
             </AmiiboProvider>
         );

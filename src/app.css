@@ -1,0 +1,7 @@
+.amiibo-container {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+.amiibo-input {
+    font-size: 1.2rem;
+}
