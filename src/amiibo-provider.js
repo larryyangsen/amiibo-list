@@ -9,7 +9,7 @@ export default class AmiiboContextProvider extends Component {
     };
     constructor() {
         super(...arguments);
-        this.amiiboUrl = new URL('http://www.amiiboapi.com/api/amiibo');
+        this.amiiboUrl = new URL('https://www.amiiboapi.com/api/amiibo');
         const searhParams = new URLSearchParams({ character: 'mario' });
         this.amiiboUrl.search = searhParams;
     }
