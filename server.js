@@ -13,7 +13,13 @@ app.get('/amiibo', async (req, res) => {
     const { character } = req.query;
     const searchParams = new URLSearchParams({ character });
     amiiboUrl.search = searchParams;
-    const { data } = await axios.get(amiiboUrl.toString());
-    res.send(data);
+    try {
+        const { data } = await axios.get(amiiboUrl.toString());
+        res.send(data);
+    } catch (e) {
+        res.send({
+            amiibo: []
+        });
+    }
 });
 app.listen(process.env.PORT || 8080);
