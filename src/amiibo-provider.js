@@ -9,14 +9,14 @@ export default class AmiiboContextProvider extends Component {
     };
     constructor() {
         super(...arguments);
-        this.amiiboUrl = new URL('https://www.amiiboapi.com/api/amiibo');
-        const searhParams = new URLSearchParams({ character: 'mario' });
-        this.amiiboUrl.search = searhParams;
+        this.amiiboUrl = new URL(`${window.location.href}amiibo`);
+        const searchParams = new URLSearchParams({ character: 'mario' });
+        this.amiiboUrl.search = searchParams;
     }
     getAmiibo = async character => {
-        const searhParams =
+        const searchParams =
             character.toLowerCase() === 'all' ? new URLSearchParams() : new URLSearchParams({ character });
-        this.amiiboUrl.search = searhParams;
+        this.amiiboUrl.search = searchParams;
         try {
             const { data } = await axios.get(this.amiiboUrl);
             this.setState({ amiibo: data.amiibo });
